@@ -14,8 +14,7 @@ int main() {
   srand(time(NULL));
   setlocale(LC_ALL, "rus");
 
-  Zoo zoo;
-  zoo.GetAnimals();
+
 
   return 0;
 }

@@ -47,7 +47,7 @@ class Animal {
   bool can_swim;
 };
 
-class Mammals : protected Animal {
+class Mammals : public Animal {
  public:
   Mammals(std::string name,
           std::string color,
@@ -96,14 +96,32 @@ class Zoo {
   Zoo() {
     malkeAnimal();
   }
-  void GetAnimals() {
-    Animals[0].showInformation();
+  Animal GetAnimal() {
+    return AllAnimals[rand()%AllAnimals.size()];
+  }
+  std::vector<Animal> GetAllAnimals() {
+    return AllAnimals;
   }
  private:
   std::vector<Animal> AllAnimals;
-  std::vector<Flying> Animals;
+  std::vector<Flying> AnimalsF;
+  std::vector<Mammals> AnimalsM;
   void malkeAnimal(){
-    Animals.push_back(Flying("Coe","red","miay","dff",4,23));
+    AnimalsM.push_back(Mammals("Вовк","Сірий","Аууууу","Ліс",4, false, false));
+    AnimalsM.push_back(Mammals("Лев","Оранжевий","Грррр","Африка",4, false, false));
+    AnimalsM.push_back(Mammals("Черепаха","Зелений","-","Європа",4, true, false));
+    AnimalsM.push_back(Mammals("Літуча миш","Сірий","-","Печери",2, false, true));
+    AnimalsF.push_back(Flying("Голуб","Сірий","хкууу-хуу-ху-хуу","Місто",2,45.0));
+    AnimalsF.push_back(Flying("Лелека", "Білий","кл-кл-кл","Село",2,90));
+    AnimalsF.push_back(Flying("Орел","Коричневий","кхаааа","Євразія і Африка",2,200));
+    AnimalsF.push_back(Flying("Фламінго","Рожевий","Кгааа-кгаа", "Африка",2,160));
+
+    for (int kI = 0; kI < AnimalsF.size(); ++kI) {
+      AllAnimals.push_back(AnimalsF[kI]);
+    }
+    for (int kJ = 0; kJ < AnimalsM.size(); ++kJ) {
+      AllAnimals.push_back(AnimalsM[kJ]);
+    }
   }
 };
 
