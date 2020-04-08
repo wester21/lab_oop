@@ -8,6 +8,7 @@
 #include <map>
 #include <string>
 
+#include "human.h"
 
 #ifndef LAB_15_ZOO__ZOO_H_
 #define LAB_15_ZOO__ZOO_H_
@@ -63,7 +64,7 @@ class Mammals : public Animal {
               << "\nEnviroment - " << enviroment
               << "\nPaws       - " << count_of_paw
               << ((can_swim) ? "\n  Can swimming!" : "\n   Can't swimming(( ")
-              << ((can_fly) ? "\n   Can fly!" : "");
+              << ((can_fly) ? "\n   Can fly!" : "") << std::endl;
   }
  private:
 
@@ -85,7 +86,7 @@ class Flying : public Animal {
               << "\nVoice      - " << voice
               << "\nEnviroment - " << enviroment
               << "\nPaws       - " << count_of_paw;
-              (can_fly) ? (std::cout << "\nWings     -  " << count_of_wings) : std::cout << "";
+              (can_fly) ? (std::cout << "\nWings     -  " << count_of_wings) : std::cout << "" << std::endl;
   }
 
  private:
@@ -95,17 +96,46 @@ class Zoo {
  public:
   Zoo() {
     malkeAnimal();
+    makeWorkers();
   }
+  void showAllAnimals() {
+    for (int kI = 0; kI < AnimalsM.size(); ++kI) {
+      AnimalsM[kI].showInformation();
+    }
+    for (int kJ = 0; kJ < AnimalsF.size(); ++kJ) {
+      AnimalsF[kJ].showInformation();
+    }
+  }
+
   Animal GetAnimal() {
     return AllAnimals[rand()%AllAnimals.size()];
   }
   std::vector<Animal> GetAllAnimals() {
     return AllAnimals;
   }
+  std::vector<Human> AllWorkers() {
+    return workers;
+  }
+
+  void showAllWorkers() {
+    std::cout  << "\nІм'я\tВік\tСтать\tДосвід\tПосада" <<std::endl;
+    for (int kI = 0; kI < workers.size(); ++kI) {
+      std::cout << workers[kI].GetName() << "\t"
+                 << workers[kI].GetAge() << "\t"
+                 << workers[kI].GetSex() << "\t"
+                 << workers[kI].GetJobExp() << "\t\t"
+                 << workers[kI].GetPost() << std::endl;
+    }
+  }
+
  private:
   std::vector<Animal> AllAnimals;
   std::vector<Flying> AnimalsF;
   std::vector<Mammals> AnimalsM;
+
+  Worker worker;
+
+  std::vector<Human> workers;
   void malkeAnimal(){
     AnimalsM.push_back(Mammals("Вовк","Сірий","Аууууу","Ліс",4, false, false));
     AnimalsM.push_back(Mammals("Лев","Оранжевий","Грррр","Африка",4, false, false));
@@ -122,6 +152,13 @@ class Zoo {
     for (int kJ = 0; kJ < AnimalsM.size(); ++kJ) {
       AllAnimals.push_back(AnimalsM[kJ]);
     }
+  }
+  void makeWorkers() {
+    workers.push_back(worker.TakeWorker("male"));
+    workers.push_back(worker.TakeWorker("Alex", "male",25,"Прибиральник"));
+    workers.push_back(worker.TakeWorker("female"));
+    workers.push_back(worker.TakeWorker("female","Директор"));
+    workers.push_back(worker.TakeWorker("male","Доглядач звірів"));
   }
 };
 

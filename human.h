@@ -112,11 +112,10 @@ class Worker{
   }
 
 
- private:
+private:
   std::vector<std::string> key_male = {"Oleg", "Vlad", "Vania", "Artem"};
-  std::vector<std::string> key_female = {"Katia", "Margo", "Sveta", "Sasha"};
+  std::vector<std::string> key_female = {"Oleg", "Vlad", "Vania", "Artem"};
   std::map<std::string, std::string> name;
-  std::vector<std::map<std::string, std::string>> list;
 
 };
 

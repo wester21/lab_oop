@@ -14,7 +14,9 @@ int main() {
   srand(time(NULL));
   setlocale(LC_ALL, "rus");
 
-
+  Zoo zoo;
+  zoo.showAllAnimals();
+  zoo.showAllWorkers();
 
   return 0;
 }
