@@ -15,6 +15,16 @@
 
 class Animal {
  public:
+  Animal(){
+    name = "Кіт";
+    color = "Білий";
+    voice = "May";
+    enviroment = "Будинок";
+    count_of_paw = 4;
+    count_of_wings = 0;
+    can_fly = false;
+    can_swim = false;
+  }
   Animal(
       std::string name,
       std::string color,
@@ -36,6 +46,15 @@ class Animal {
   }
   virtual void Animalvoice() {
     std::cout << voice;
+  }
+  virtual std::string GetName() {
+    return name;
+  }
+  virtual std::string GetColor() {
+    return color;
+  }
+  virtual std::string GetEnv() {
+    return enviroment;
   }
  protected:
   std::string name;
@@ -132,9 +151,7 @@ class Zoo {
   std::vector<Animal> AllAnimals;
   std::vector<Flying> AnimalsF;
   std::vector<Mammals> AnimalsM;
-
   Worker worker;
-
   std::vector<Human> workers;
   void malkeAnimal(){
     AnimalsM.push_back(Mammals("Вовк","Сірий","Аууууу","Ліс",4, false, false));

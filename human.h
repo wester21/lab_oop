@@ -17,6 +17,13 @@
 
 class Human {
  public:
+  Human() {
+    passport.name = "Sviatoslav";
+    passport.sex = "Male";
+    passport.age = 25;
+    passport.job_post = "None";
+    passport.job_experience = 0;
+  }
   Human(std::string name, unsigned short age, std::string sex, float job_experience, std::string job_post) {
     passport.name = name;
     passport.age = age;
@@ -26,26 +33,31 @@ class Human {
   }
 
 
-  std::string GetName() {
+  virtual std::string GetName() {
     return passport.name;
   }
-  unsigned short GetAge() {
+  virtual unsigned short GetAge() {
     return passport.age;
   }
-  std::string GetSex() {
+  virtual std::string GetSex() {
     return passport.sex;
   }
-  float GetJobExp() {
+  virtual float GetJobExp() {
     return passport.job_experience;
   }
-  std::string GetPost() {
+  virtual std::string GetPost() {
     return passport.job_post;
   }
-  void SetJobExp(float exp) {
+  virtual void SetJobExp(float exp) {
     passport.job_experience = exp;
   }
-  void SetPost(std::string post) {
+  virtual void SetPost(std::string post) {
     passport.job_post = post;
+  }
+  virtual void showPassport(Human human) {
+    std::cout << "\nІм'я\t" << passport.name
+                   << "\nВік\t" << passport.age
+                   << "\nСтать\t" << passport.sex;
   }
 
 
@@ -122,5 +134,3 @@ private:
 
 
 #endif //LAB_15_ZOO_CMAKE_BUILD_DEBUG_HUMAN_H_
-
-
