@@ -71,7 +71,7 @@ class Human {
   }passport;
 };
 
-class Worker{
+class Worker : Human {
  public:
   Worker() {
     for (int kI = 0; kI < key_male.size(); ++kI) {
