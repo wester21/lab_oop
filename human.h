@@ -60,7 +60,6 @@ class Human {
                    << "\nСтать\t" << passport.sex;
   }
 
-
  private:
   struct {
   std::string name;

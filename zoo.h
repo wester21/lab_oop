@@ -125,7 +125,12 @@ class Zoo {
       AnimalsF[kJ].showInformation();
     }
   }
-
+  static void showZooDocs() {
+    std::cout << "\nFor create Zoo use: Zoo {name your zoo};"
+                 "\nFor show all animals in new zoo use: {name}.showAllAnimals();"
+                 "\nFor show all workers in new zoo use: {name}.showAllWorkers();"
+                 "\nFor add new worker use: {name}.SwtWorker({your worker});";
+  }
   Animal GetAnimal() {
     return AllAnimals[rand()%AllAnimals.size()];
   }
@@ -146,7 +151,9 @@ class Zoo {
                  << workers[kI].GetPost() << std::endl;
     }
   }
-
+  void SetWorker(Human worker) {
+    workers.push_back(worker);
+  }
  private:
   std::vector<Animal> AllAnimals;
   std::vector<Flying> AnimalsF;
